@@ -22,6 +22,3 @@ struct MovieDetailItemView: View {
     }
 }
 
-#Preview {
-    MovieDetailItemView(imageName: "country", parameterName: "Country: ", parameterValue: "India")
-}

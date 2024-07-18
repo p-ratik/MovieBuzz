@@ -13,7 +13,7 @@ struct MovieDetailView: View {
     
     var body: some View {
         VStack {
-            MovieDetailHeaderView()
+            MovieDetailHeaderView(movieName: presenter.movie?.title ?? Constants.defaultMovieName)
                 .padding(.vertical, 15)
             ZStack {
                 Color.gray.opacity(0.1)
@@ -30,7 +30,7 @@ struct MovieDetailView: View {
                             Spacer()
                         }
                         if presenter.movie == nil {
-                            Text("Loading....")
+                            Text(Constants.loading)
                         } else {
                             VStack(alignment: .leading, spacing: 8) {
                                 MovieDetailItemView(imageName: Constants.projectorIcon, parameterName: Constants.movieTitle, parameterValue: presenter.movie?.title ?? "")
@@ -63,6 +63,3 @@ struct MovieDetailView: View {
     }
 }
 
-#Preview {
-    MovieDetailView(id: 0)
-}

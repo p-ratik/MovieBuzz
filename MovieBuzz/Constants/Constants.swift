@@ -30,4 +30,8 @@ class Constants {
     static let language = "Language: "
     static let boxOffice = "Box Office: "
     static let defaultPosterImage = "poster"
+    static let loading = "Loading...."
+    static let chevronBackward = "chevron.backward"
+    static let defaultMovieName = "Movie Name"
+    
 }
