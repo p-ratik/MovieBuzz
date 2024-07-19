@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct MovieBuzzApp: App {
+    private let router = MovieListRouter()
     var body: some Scene {
         WindowGroup {
-            MovieListView()
+            router.createMovieListView()
         }
     }
 }

@@ -11,26 +11,28 @@ import SwiftUI
 class MovieListPresenter: ObservableObject {
     @Published var movies: [Movie] = []
     @Published var errorMessage: String?
-    private var interactor = MovieListInteractor()
-    private var router = MovieListRouter()
+    var interactor: MovieListInteractor?
+    var router: MovieListRouter?
     
     func fetchedMovies() {
-        interactor.fetchMovies { result in
-            switch result {
-            case .success(let movies):
-                DispatchQueue.main.async {
-                    self.movies = movies
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.errorMessage = error.localizedDescription
+        if let interactor = interactor {
+            interactor.fetchMovies { result in
+                switch result {
+                case .success(let movies):
+                    DispatchQueue.main.async {
+                        self.movies = movies
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.errorMessage = error.localizedDescription
+                    }
                 }
             }
         }
     }
     
     func didSelectMovie(id: Int) -> MovieDetailView {
-        return router.naviagteToMovieDetailView(id: id)
+        return router?.naviagteToMovieDetailView(id: id) ?? MovieDetailView(id: id)
     }
     
     

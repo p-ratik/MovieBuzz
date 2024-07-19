@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct MovieListView: View {
-    @StateObject var presenter = MovieListPresenter()
+    @ObservedObject var presenter: MovieListPresenter
     
     var body: some View {
         NavigationStack {
@@ -46,6 +46,3 @@ struct MovieListView: View {
     }
 }
 
-#Preview {
-    MovieListView()
-}
